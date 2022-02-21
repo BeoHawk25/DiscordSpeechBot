@@ -69,9 +69,11 @@ function loadConfig() {
         const CFG_DATA = JSON.parse(fs.readFileSync(SETTINGS_FILE, 'utf8'));
         DISCORD_TOK = CFG_DATA.discord_token;
         WITAPIKEY = CFG_DATA.wit_ai_token;
+        RESETURL = CFG_DATA.reset_url;
     } else {
         DISCORD_TOK = process.env.DISCORD_TOK;
         WITAPIKEY = process.env.WITAPIKEY;
+        RESETURL = process.env.RESETURL;
     }
     if (!DISCORD_TOK || !WITAPIKEY)
         throw 'Failed loading, missing API keys!'
@@ -84,7 +86,7 @@ const https = require('https')
 
 function restartApp() {
     const options = {
-        hostname: 'hawkins-speech-to-text-starter.herokuapp.com',
+        hostname: RESETURL,
         path: '/restart',
         method: 'GET'
     }
