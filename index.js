@@ -288,6 +288,7 @@ function getHelpString() {
     out += '```'
     out += _CMD_HELP + '\n'
     out += _CMD_JOIN + '/' + _CMD_LEAVE + '\n';
+    out += _CMD_RESTART + '\n';
     out += '```'
     return out;
 }
