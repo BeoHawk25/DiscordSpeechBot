@@ -34,6 +34,25 @@ A speech-to-text bot for discord written in NodeJS.
     Discord Bot Captcha Message (Not A Robot): Success! Your bot has been authorized, and you should see it pop up in the list of participants on your server!
 
 
+## Create WitAI account
+Create a (free) WitAI account and obtain the API credentials (Server Access Token): https://wit.ai/
+
+Rename the file `settings-sample.json` to `settings.json` and enter the obtained API credentials:
+```
+{
+    "discord_token": "your_token",
+    "wit_ai_token": "your_token",
+    "reset_url": "your_reset_url"
+}
+```
+
+If you are using Heroku or another service you can also use Environment Variables (Configuration Variables) instead of a settings file. Configure these with the appropriate values:
+```
+DISCORD_TOK
+WITAPIKEY
+RESETURL
+```
+
 
 ## Deploy your code to Heroku
 If you don't have a linux server/machine then you can use Heroku for hosting your bot 24/7 and it's free.
@@ -53,44 +72,6 @@ Tutorial: https://dev.to/codr/discord-ears-bot-on-heroku-4606
 11. With the bot invited you can make the bot join a voice channel, and as you speak you'll see logging info on Heroku, and the bot should also be doing its job.
 
 
-## Installation
-You need nodeJS version 12+ with npm on your machine.
-
-## Settings
-Create a (free) discord bot and obtain the API credentials (Bot Token).
-Here's an easy tutorial: https://www.writebots.com/discord-bot-token/
-Note: Give your bot enough permissions or simply grant it Administrator rights.
-
-Create a (free) WitAI account and obtain the API credentials (Server Access Token): https://wit.ai/
-
-Rename the file `settings-sample.json` to `settings.json` and enter the obtained API credentials:
-```
-{
-    "discord_token": "your_token",
-    "wit_ai_token": "your_token",
-    "reset_url": "your_reset_url"
-}
-```
-
-If you are using Heroku or another service you can also use Environment Variables instead of a settings file. Configure these with the appropriate values:
-```
-DISCORD_TOK
-WITAPIKEY
-RESETURL
-```
-
-## Running
-
-Execute the following in your shell or prompt:
-```
-node index.js
-```
-
-Use [PM2](https://www.npmjs.com/package/pm2) to keep the bot running 24/7, it will also restart the bot in case of a crash or on memory limits (2GB default):
-```
-pm2 start ecosystem.config.js
-```
-
 ## Usage
 By now you have a discord server, the DiscordSpeechBot is running and is a part of your server.
 Make sure your server has a text and voice channel.
@@ -98,17 +79,6 @@ Make sure your server has a text and voice channel.
 1. Enter one of your voice channels.
 2. In one of your text channels type: `!join`
 3. Type `!help` for a list of commands.
-
-Examples:
-
-```
-!play https://www.youtube.com/watch?v=vK1YiArMDfg
-!play red hot chili peppers californication
-!list
-!skip
-```
-
-### Voice commands
 
 When the bot is inside a voice channel it listens to all speech and tries to transcribe it to text.
 
